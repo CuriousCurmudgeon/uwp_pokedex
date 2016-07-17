@@ -28,8 +28,9 @@ namespace Pokedex.Windows
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            InitializeComponent();
+            RequiresPointerMode = ApplicationRequiresPointerMode.WhenRequested;
+            Suspending += OnSuspending;
         }
 
         /// <summary>
