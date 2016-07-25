@@ -8,10 +8,6 @@
     xmlns:pokedex ="using:Pokedex"
     mc:Ignorable="d">
 
-    <Page.DataContext>
-        <pokedex:MainViewModel/>
-    </Page.DataContext>
-    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="{Binding Test}"
                    HorizontalAlignment="Center"

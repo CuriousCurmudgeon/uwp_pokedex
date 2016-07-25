@@ -10,13 +10,33 @@ namespace Pokedex
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        private PokemonService _pokemonService;
+
         // Setting an empty delegate is not strictly necessary, but it removes the need
         // for null checks for a miniscule performance hit.
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public MainViewModel()
         {
+            _pokemonService = new PokemonService();
             Test = "Test Text";
+        }
+
+        public async Task InitAsync()
+        {
+            var response = await _pokemonService.CatchEmAllAsync();
+            _pokemons = response.Results;
+        }
+
+        private IEnumerable<SimplePokemon> _pokemons;
+        public IEnumerable<SimplePokemon> Pokemons
+        {
+            get { return _pokemons; }
+            set
+            {
+                _pokemons = value;
+                OnPropertyChanged();
+            }
         }
 
         private string _test;

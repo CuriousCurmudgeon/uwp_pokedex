@@ -25,6 +25,16 @@ namespace Pokedex.Windows
         public MainPage()
         {
             this.InitializeComponent();
+            VM = new MainViewModel();
+        }
+
+        public MainViewModel VM { get; set; }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            await VM.InitAsync();
         }
     }
 }
