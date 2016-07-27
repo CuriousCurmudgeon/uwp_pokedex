@@ -5,6 +5,7 @@
     xmlns:local="using:Pokedex.Windows"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models ="using:Pokedex.Models"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -12,8 +13,53 @@
                       VerticalAlignment="Center"
                       Height="100" Width="100"
                       IsActive="{x:Bind VM.IsLoading, Mode=OneWay}"/>
-        <TextBlock HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Text="{x:Bind VM.Name}"/>
+        <RelativePanel Margin="50">
+            <Image x:Name="Sprite"
+                   RelativePanel.AlignLeftWithPanel="True"
+                   RelativePanel.AlignRightWithPanel="True"
+                   Source="{x:Bind VM.Details.Sprites.FrontDefault}"/>
+            
+            <TextBlock x:Name="IdLabel"
+                       RelativePanel.Below="Sprite"
+                       Margin="0,10,0,0"
+                       Text="ID:"/>
+            <TextBlock x:Name="Id"
+                       RelativePanel.RightOf="IdLabel"
+                       Margin="5,0,0,0"
+                       Text="{x:Bind VM.Details.Id}"/>
+
+            <TextBlock x:Name="NameLabel"
+                       RelativePanel.Below="IdLabel"
+                       Margin="0,10,0,0"
+                       Text="Name:"/>
+            <TextBlock x:Name="Name"
+                       RelativePanel.RightOf="NameLabel"
+                       Margin="5,0,0,0"
+                       Text="{x:Bind VM.Details.Name}"/>
+
+            <TextBlock x:Name="WeightLabel"
+                       RelativePanel.Below="NameLabel"
+                       Margin="0,10,0,0"
+                       Text="Weight:"/>
+            <TextBlock x:Name="Weight"
+                       RelativePanel.RightOf="WeightLabel"
+                       Margin="5,0,0,0"
+                       Text="{x:Bind VM.Details.Weight}"/>
+
+            <TextBlock x:Name="TypesLabel"
+                       RelativePanel.Below="WeightLabel"
+                       Margin="0,10,0,0"
+                       Text="Types:"/>
+            <ListView x:Name="Types"
+                      RelativePanel.RightOf="TypesLabel"
+                      ItemsSource="{x:Bind VM.Details.Types}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:PokemonType">
+                        <TextBlock Text="{x:Bind Type.Name}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </RelativePanel>
     </Grid>
 </Page>
