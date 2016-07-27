@@ -5,7 +5,7 @@
     xmlns:local="using:Pokedex.Windows"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pokedex ="using:Pokedex"
+    xmlns:models ="using:Pokedex.Models"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -18,7 +18,7 @@
                   Margin="50"
                   SelectionChanged="ListView_SelectionChanged">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="pokedex:SimplePokemon">
+                <DataTemplate x:DataType="models:AdditionalInfo">
                     <TextBlock Text="{x:Bind Name}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>

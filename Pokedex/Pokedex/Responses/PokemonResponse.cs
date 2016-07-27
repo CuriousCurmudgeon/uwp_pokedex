@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Pokedex.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pokedex
+namespace Pokedex.Responses
 {
     public class PokemonResponse
     {
@@ -14,6 +15,6 @@ namespace Pokedex
 
         public Uri Next { get; set; }
 
-        public IEnumerable<SimplePokemon> Results { get; set; }
+        public IEnumerable<AdditionalInfo> Results { get; set; }
     }
 }

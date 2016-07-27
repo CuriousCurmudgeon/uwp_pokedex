@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pokedex
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
         // Setting an empty delegate is not strictly necessary, but it removes the need
         // for null checks for a miniscule performance hit.
@@ -21,5 +21,18 @@ namespace Pokedex
         {
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                _isLoading = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public abstract Task InitAsync();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pokedex.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,14 +12,14 @@ namespace Pokedex
 {
     public class MainViewModel : ViewModelBase
     {
-        private PokemonService _pokemonService;
+        private readonly PokemonService _pokemonService;
 
         public MainViewModel()
         {
             _pokemonService = new PokemonService();
         }
 
-        public async Task InitAsync()
+        public override async Task InitAsync()
         {
             try
             {
@@ -33,19 +34,8 @@ namespace Pokedex
             }
         }
 
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get { return _isLoading; }
-            set
-            {
-                _isLoading = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private IEnumerable<SimplePokemon> _pokemons;
-        public IEnumerable<SimplePokemon> Pokemons
+        private IEnumerable<AdditionalInfo> _pokemons;
+        public IEnumerable<AdditionalInfo> Pokemons
         {
             get { return _pokemons; }
             set

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pokedex.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,13 +30,14 @@ namespace Pokedex.Windows
 
         public PokemonViewModel VM { get; set; }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var pokemon = e.Parameter as SimplePokemon;
+            var pokemon = e.Parameter as AdditionalInfo;
             if (pokemon != null)
             {
                 VM = new PokemonViewModel(pokemon);
+                await VM.InitAsync();
             }
         }
     }

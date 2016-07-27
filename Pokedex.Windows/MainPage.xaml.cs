@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pokedex.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace Pokedex.Windows
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var pokemon = e.AddedItems.FirstOrDefault() as SimplePokemon;
+            var pokemon = e.AddedItems.FirstOrDefault() as AdditionalInfo;
             if (pokemon != null)
             {
                 Frame.Navigate(typeof(PokemonView), pokemon);

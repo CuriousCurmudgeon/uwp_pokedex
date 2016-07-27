@@ -37,11 +37,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="MainViewModel.cs" />
-    <Compile Include="PokemonResponse.cs" />
+    <Compile Include="Models\PokemonType.cs" />
+    <Compile Include="Responses\PokemonDetailsResponse.cs" />
+    <Compile Include="Responses\PokemonResponse.cs" />
     <Compile Include="PokemonService.cs" />
     <Compile Include="PokemonViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimplePokemon.cs" />
+    <Compile Include="Models\AdditionalInfo.cs" />
+    <Compile Include="Models\PokemonSprites.cs" />
     <Compile Include="ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
