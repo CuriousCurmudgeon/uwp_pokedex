@@ -8,7 +8,7 @@
     xmlns:models ="using:Pokedex.Models"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="GridRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ProgressRing HorizontalAlignment="Center"
                       VerticalAlignment="Center"
                       Height="100" Width="100"
@@ -23,5 +23,23 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="GridRoot.Background" Value="Green"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>
