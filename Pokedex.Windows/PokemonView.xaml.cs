@@ -13,36 +13,29 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Pokedex.Windows
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class PokemonView : Page
     {
-        public MainPage()
+        public PokemonView()
         {
-            this.InitializeComponent();
-            VM = new MainViewModel();
+            InitializeComponent();
         }
 
-        public MainViewModel VM { get; set; }
+        public PokemonViewModel VM { get; set; }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            await VM.InitAsync();
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var pokemon = e.AddedItems.FirstOrDefault() as SimplePokemon;
+            var pokemon = e.Parameter as SimplePokemon;
             if (pokemon != null)
             {
-                Frame.Navigate(typeof(PokemonView), pokemon);
+                VM = new PokemonViewModel(pokemon);
             }
         }
     }

@@ -15,7 +15,8 @@
                       IsActive="{x:Bind VM.IsLoading, Mode=OneWay}"/>
 
         <ListView ItemsSource="{x:Bind VM.Pokemons, Mode=OneWay}"
-                  Margin="50">
+                  Margin="50"
+                  SelectionChanged="ListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="pokedex:SimplePokemon">
                     <TextBlock Text="{x:Bind Name}"/>
