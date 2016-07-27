@@ -26,7 +26,7 @@
             <TextBlock x:Name="Id"
                        RelativePanel.RightOf="IdLabel"
                        Margin="5,0,0,0"
-                       Text="{x:Bind VM.Details.Id}"/>
+                       Text="{x:Bind VM.Details.Id, Mode=OneWay}"/>
 
             <TextBlock x:Name="NameLabel"
                        RelativePanel.Below="IdLabel"
@@ -35,7 +35,7 @@
             <TextBlock x:Name="Name"
                        RelativePanel.RightOf="NameLabel"
                        Margin="5,0,0,0"
-                       Text="{x:Bind VM.Details.Name}"/>
+                       Text="{x:Bind VM.Details.Name, Mode=OneWay}"/>
 
             <TextBlock x:Name="WeightLabel"
                        RelativePanel.Below="NameLabel"
@@ -44,7 +44,7 @@
             <TextBlock x:Name="Weight"
                        RelativePanel.RightOf="WeightLabel"
                        Margin="5,0,0,0"
-                       Text="{x:Bind VM.Details.Weight}"/>
+                       Text="{x:Bind VM.Details.Weight, Mode=OneWay}"/>
 
             <TextBlock x:Name="TypesLabel"
                        RelativePanel.Below="WeightLabel"
@@ -52,7 +52,7 @@
                        Text="Types:"/>
             <ListView x:Name="Types"
                       RelativePanel.RightOf="TypesLabel"
-                      ItemsSource="{x:Bind VM.Details.Types}">
+                      ItemsSource="{x:Bind VM.Details.Types, Mode=OneWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:PokemonType">
                         <TextBlock Text="{x:Bind Type.Name}"/>
