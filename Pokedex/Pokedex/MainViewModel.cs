@@ -19,13 +19,32 @@ namespace Pokedex
         public MainViewModel()
         {
             _pokemonService = new PokemonService();
-            Test = "Test Text";
         }
 
         public async Task InitAsync()
         {
-            var response = await _pokemonService.CatchEmAllAsync();
-            _pokemons = response.Results;
+            try
+            {
+                IsLoading = true;
+
+                var response = await _pokemonService.CatchEmAllAsync();
+                Pokemons = response.Results;
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
+
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                _isLoading = value;
+                OnPropertyChanged();
+            }
         }
 
         private IEnumerable<SimplePokemon> _pokemons;
@@ -35,17 +54,6 @@ namespace Pokedex
             set
             {
                 _pokemons = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string _test;
-        public string Test
-        {
-            get { return _test; }
-            set
-            {
-                _test = value;
                 OnPropertyChanged();
             }
         }

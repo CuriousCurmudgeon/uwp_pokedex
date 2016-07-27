@@ -9,8 +9,18 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="{Binding Test}"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <ProgressRing HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Height="100" Width="100"
+                      IsActive="{x:Bind VM.IsLoading, Mode=OneWay}"/>
+
+        <ListView ItemsSource="{x:Bind VM.Pokemons, Mode=OneWay}"
+                  Margin="50">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="pokedex:SimplePokemon">
+                    <TextBlock Text="{x:Bind Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
